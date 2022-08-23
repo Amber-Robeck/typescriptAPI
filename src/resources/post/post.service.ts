@@ -1,6 +1,6 @@
 import PostModel from '@/resources/post/post.model';
 import Post from '@/resources/post/post.interface';
-import { request } from 'http';
+// import { request } from 'http';
 
 class PostService {
     private post = PostModel;
@@ -14,9 +14,10 @@ class PostService {
         }
     }
 
-    public async update(title: string, body: string): Promise<Post> {
+    public async update(title: string, body: string, request: Request): Promise<Post> {
         try {
-            const update = this.post.findOneAndUpdate({_id: request.params.id},{title, body});
+            const id = request.params;
+            const update = this.post.findOneAndUpdate({_id: id},{title, body});
             return update;
         } catch (error) {
             throw new Error('Unable to update Post')

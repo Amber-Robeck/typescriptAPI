@@ -48,8 +48,8 @@ class PostController implements Controller {
         next: NextFunction
     ): Promise<Response | void> => {
         try {
-            const {title, body} = request.body;
-            const update = await this.PostService.update(title, body);
+            // const {body.title, body.body, params} = request;
+            const update = await this.PostService.update(request.body.title, request.body.body, request.params);
             response.status(201).json({update});
         }
         catch (error: any) {
