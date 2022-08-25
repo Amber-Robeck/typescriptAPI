@@ -14,15 +14,15 @@ class PostService {
         }
     }
 
-    public async update(title: string, body: string, request: Request): Promise<Post> {
-        try {
-            const id = request.params;
-            const update = this.post.findOneAndUpdate({_id: id},{title, body});
-            return update;
-        } catch (error) {
-            throw new Error('Unable to update Post')
-        }
-    }
+    // public async update(title: string, body: string, request: Request): Promise<Post> {
+    //     try {
+    //         const id = request.body;
+    //         // const update = this.post.findOneAndUpdate({_id: id},{title, body});
+    //         // return update;
+    //     } catch (error) {
+    //         throw new Error('Unable to update Post')
+    //     }
+    // }
     
 }
 
