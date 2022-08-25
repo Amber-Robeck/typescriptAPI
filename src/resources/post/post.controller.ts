@@ -20,10 +20,10 @@ class PostController implements Controller {
             validationMiddleware(validate.create),
             this.create
         )
-        this.router.put(
-            `${this.path}/:id`,
-            this.update
-        )
+        // this.router.put(
+        //     `${this.path}/:id`,
+        //     this.update
+        // )
     }
 
     private create = async (
@@ -42,21 +42,21 @@ class PostController implements Controller {
 
     }
 
-    private update = async (
-        request: Request,
-        response: Response,
-        next: NextFunction
-    ): Promise<Response | void> => {
-        try {
-            // const {body.title, body.body, params} = request;
-            const update = await this.PostService.update(request.body.title, request.body.body, request.params);
-            response.status(201).json({update});
-        }
-        catch (error: any) {
-            next(new HttpException(400, error.message));
-        }
+    // private update = async (
+    //     request: Request,
+    //     response: Response,
+    //     next: NextFunction
+    // ): Promise<Response | void> => {
+    //     try {
+    //         // const {body.title, body.body, params} = request;
+    //         const update = await this.PostService.update(request.body.title, request.body.body, request.body.id);
+    //         response.status(201).json({update});
+    //     }
+    //     catch (error: any) {
+    //         next(new HttpException(400, error.message));
+    //     }
 
-    }
+    // }
 
 }
 
