@@ -17,7 +17,7 @@ async function authenticatedMiddleware(
         return next(new HttpException(401, 'Unauthorized'));
     }
 
-    const accessToken = bearer.split('Bearer: ')[1].trim();
+    const accessToken = bearer.split('Bearer ')[1].trim();
 
     try {
         const payload: Token | jwt.JsonWebTokenError = await verifyToken(accessToken);
